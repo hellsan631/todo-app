@@ -1,0 +1,9 @@
+{
+  "db": {
+    "name": "mongodb",
+    "connector": "mongodb",
+    "host": "localhost",
+    "database": "todoapp",
+    "port": 27017
+  }
+}
