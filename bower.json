@@ -1,0 +1,17 @@
+{
+  "name": "todo-app",
+  "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/app/vendor",
+    "client/app/bower_components",
+    "test",
+    "server/tests",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "^0.96.1"
+  }
+}
