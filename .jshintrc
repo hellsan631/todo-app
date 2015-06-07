@@ -17,5 +17,15 @@
   "unused": false,
   "trailing": true,
   "sub": true,
-  "maxlen": 80
+  "maxlen": 80,
+  "globals"   : {
+    /* HTML5 */
+    "localStorage": false,
+    "window": false,
+    "document": false,
+    /* jQuery+Angular */
+    "$": false,
+    "angular": false,
+    "Materialize": false
+  }
 }
