@@ -46,13 +46,13 @@
             </div>
             <div class="card-action">
 
-              <a class="waves-effect waves-teal btn-flat"
-              ng-click="markdone(todo.id)"
-              ng-if="todo.finished === 0">{{ language.done }}</a>
+              <a 
+                ng-click="markdone(todo.id)"
+                ng-if="todo.finished === 0">{{ language.done }}</a>
 
-              <a class="waves-effect waves-teal btn-flat"
-              ng-click="markAsTodo(todo.id)"
-              ng-if="todo.finished === 1">{{ language.todo }}</a>
+              <a
+                ng-click="markAsTodo(todo.id)"
+                ng-if="todo.finished === 1">{{ language.todo }}</a>
             </div>
           </div>
         </div>

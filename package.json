@@ -2,9 +2,6 @@
   "name": "todo-app",
   "version": "1.0.0",
   "main": "server/server.js",
-  "scripts": {
-    "pretest": "jshint ."
-  },
   "dependencies": {
     "compression": "^1.0.3",
     "cors": "^2.5.2",
@@ -26,5 +23,9 @@
     "type": "",
     "url": ""
   },
-  "description": "todo-app"
+  "description": "todo-app",
+  "scripts": {
+    "start": "node server/server.js",
+    "postinstall": "bower install"
+  }
 }
