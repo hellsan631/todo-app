@@ -20,7 +20,7 @@
 
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo center">Todo App</a>
+        <a href="#" class="brand-logo center">Whiplash Todo</a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li ><a ng-click="finished = 0; refreshTodos();">Todo Items</a></li>
           <li ><a ng-click="finished = 1; refreshTodos();">Done</a></li>
@@ -46,7 +46,7 @@
             </div>
             <div class="card-action">
 
-              <a 
+              <a
                 ng-click="markdone(todo.id)"
                 ng-if="todo.finished === 0">{{ language.done }}</a>
 
