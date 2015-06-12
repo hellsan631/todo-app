@@ -1,13 +1,29 @@
-var loopback = require('loopback');
-var boot = require('loopback-boot');
+var loopback = require('loopback'),
+    boot = require('loopback-boot'),
+    DeepstreamServer = require( 'deepstream.io' ),
+    MongoDBStorageConnector = require( 'deepstream.io-storage-mongodb' ),
+    server = new DeepstreamServer();
 
 var app = module.exports = loopback();
+
+// Optionally you can specify some settings, a full list of which
+// can be found here http://deepstream.io/docs/deepstream.html
+server.set( 'serverName', 'todoApp' );
+server.set( 'host', 'localhost' );
+server.set( 'port', 6020 );
+
+server.set( 'storage', new MongoDBStorageConnector( {
+  connectionString: 'mongodb://localhost:27017/todoapp',
+  splitChar: '/'
+}));
 
 app.start = function() {
   // start the web server
   return app.listen(function() {
     app.emit('started');
     console.log('Web server listening at: %s', app.get('url'));
+    // start the Deepstream Server
+    server.start();
   });
 };
 

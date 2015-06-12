@@ -26,6 +26,7 @@
     /* jQuery+Angular */
     "$": false,
     "angular": false,
-    "Materialize": false
+    "Materialize": false,
+    "deepstream": false
   }
 }

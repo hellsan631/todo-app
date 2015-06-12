@@ -1,5 +1,6 @@
 {
   "name": "Todo",
+  "plural": "Todo",
   "base": "PersistedModel",
   "idInjection": true,
   "properties": {

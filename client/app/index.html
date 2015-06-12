@@ -16,7 +16,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="teal darken-4" ng-app="app" ng-controller="whiplash">
+  <body class="teal darken-4" ng-app="app" ng-controller="TodoController">
 
     <nav>
       <div class="nav-wrapper">
@@ -64,8 +64,12 @@
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="js/lb-services.js"></script>
+    <script src="bower_components/deepstream.io-client-js/dist/deepstream.js"></script>
+
     <script src="js/app.js"></script>
+    <script src="js/services/deepstream.js"></script>
+    <script src="js/services/loopback.js"></script>
+    <script src="js/controllers/todo.js"></script>
 
   </body>
 </html>
