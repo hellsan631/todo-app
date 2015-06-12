@@ -3,9 +3,20 @@ angular
   .controller('TodoController', ['$scope', '$rootScope', 'Todo', 'deepstream',
     function($scope, $rootScope, Todo, deepstream) {
 
+      $(document).ready(function(){
+        $('.modal-trigger').leanModal();
+      });
+
       var list = deepstream.record.getList('Todo');
 
       $scope.todos = [];
+      $scope.newTodo = {
+        id: deepstream.getUid(),
+        title: '',
+        text: '',
+        createdOn: (new Date()).toString(),
+        finished: false
+      };
 
       list.subscribe(function( entries ){
     		function scopeApply() {
@@ -26,7 +37,46 @@ angular
         console.log(list.getEntries());
       });
 
-      $scope.finished = 0;
+      $scope.finished = false;
+
+      $scope.createTodo = function(){
+        var modal = $('#createTodo');
+        modal.openModal();
+
+        $scope.ok = function(){
+
+          if(!validateTodo($scope.newTodo)){
+            $scope.resetTodo();
+            return modal.closeModal();
+          }
+
+          var name = 'Todo/' + $scope.newTodo.id;
+
+      		deepstream
+      			.record
+      			.getRecord( name )
+      			.set($scope.newTodo);
+
+      		list.addEntry(name);
+
+          $scope.resetTodo();
+
+          modal.closeModal();
+        };
+
+        $scope.cancel = function(){
+          $scope.resetTodo();
+          modal.closeModal();
+        };
+
+        $scope.resetTodo = function(){
+          $scope.newTodo = {
+            id: deepstream.getUid(),
+            title: '',
+            text: ''
+          };
+        };
+      };
 
       $scope.markdone = function(todoId){
 
@@ -47,6 +97,14 @@ angular
           });
 
       };
+
+      function validateTodo(todo){
+        if(todo.title.length < 1){
+          return false;
+        }
+
+        return true;
+      }
 
 
 

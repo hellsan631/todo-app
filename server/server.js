@@ -12,11 +12,6 @@ server.set( 'serverName', 'todoApp' );
 server.set( 'host', 'localhost' );
 server.set( 'port', 6020 );
 
-server.set( 'storage', new MongoDBStorageConnector( {
-  connectionString: 'mongodb://localhost:27017/todoapp',
-  splitChar: '/'
-}));
-
 app.start = function() {
   // start the web server
   return app.listen(function() {

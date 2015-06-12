@@ -6,6 +6,7 @@
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "deepstream.io": "^0.2.16",
+    "deepstream.io-client-js": "^0.2.15",
     "deepstream.io-storage-mongodb": "^0.2.2",
     "errorhandler": "^1.1.1",
     "loopback": "^2.14.0",

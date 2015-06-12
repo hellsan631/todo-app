@@ -18,12 +18,40 @@
   </head>
   <body class="teal darken-4" ng-app="app" ng-controller="TodoController">
 
+    <!-- Modal Structure -->
+    <div id="createTodo" class="modal">
+      <div class="modal-content">
+
+        <h4>Create Todo</h4>
+
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="title" type="text" ng-model="newTodo.title" class="validate">
+                <label for="title">Title</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea id="text" ng-model="newTodo.text" class="materialize-textarea"></textarea>
+                <label for="text">Text</label>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <a class="waves-effect waves-green btn-flat" ng-click="cancel()">Cancel</a>
+        <a class="waves-effect waves-green btn-flat" ng-click="ok()">Add Todo</a>
+      </div>
+    </div>
+
     <nav>
       <div class="nav-wrapper">
         <a href="#" class="brand-logo center">Whiplash Todo</a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
-          <li ><a ng-click="finished = 0; refreshTodos();">Todo Items</a></li>
-          <li ><a ng-click="finished = 1; refreshTodos();">Done</a></li>
+          <li ><a ng-click="finished = false;">Todo Items</a></li>
+          <li ><a ng-click="finished = true;">Done</a></li>
         </ul>
       </div>
     </nav>
@@ -32,27 +60,40 @@
       <div class="row">
         <div class="section">
           <div class="col s12">
-            <input type="text" class="white-text" placeholder="Search here..." ng-model="filter" />
+            <div class="col s2">
+              <a class="btn-floating btn-large waves-effect waves-light red"
+                 ng-click="createTodo()">
+
+                <i class="mdi-content-add"></i>
+              </a>
+            </div>
+            <div class="col s10">
+              <input type="text" class="white-text" placeholder="Search here..." ng-model="filter" />
+            </div>
+
           </div>
         </div>
       </div>
       <div class="row">
 
-        <div class="col s12 m6" ng-repeat="todo in todos | filter: filter | orderBy: '-createdOn'  ">
+        <div class="col s12 m6"
+            ng-cloak
+            ng-repeat="todo in todos | filter: filter | orderBy: '-createdOn'"
+            ng-if="todo._$data.finished === finished">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
-              <span class="card-title">{{ todo.title }}</span>
-              <p>{{ todo.text }}</p>
+              <span class="card-title">{{ todo._$data.title }}</span>
+              <p>{{ todo._$data.text }}</p>
             </div>
             <div class="card-action">
 
               <a
-                ng-click="markdone(todo.id)"
-                ng-if="todo.finished === 0">{{ language.done }}</a>
+                ng-click="markAsDone(todo.id)"
+                ng-if="!todo._$data.finished">Mark as done</a>
 
               <a
                 ng-click="markAsTodo(todo.id)"
-                ng-if="todo.finished === 1">{{ language.todo }}</a>
+                ng-if="todo._$data.finished">Mark as todo</a>
             </div>
           </div>
         </div>
