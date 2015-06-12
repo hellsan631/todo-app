@@ -23,6 +23,7 @@
     "localStorage": false,
     "window": false,
     "document": false,
+    "location": false,
     /* jQuery+Angular */
     "$": false,
     "angular": false,

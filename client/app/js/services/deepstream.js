@@ -1,7 +1,8 @@
 angular
   .module('app')
   .service('deepstream', function() {
-  	return deepstream('localhost:6020').login();
+    var loc = location.host.substr(0, location.host.indexOf(':'));
+  	return deepstream(loc+':6020').login();
   })
   .service( 'bindFields', function(){
   	return function getField( $scope, record, names ) {
