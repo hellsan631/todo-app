@@ -1,5 +1,6 @@
 angular
   .module('app', [
     'ngResource',
-    'lbServices'
+    'lbServices',
+    'deepServices'
   ]);
